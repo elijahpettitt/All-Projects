@@ -21,18 +21,27 @@ int main() {
 	//ShoppingCart cart("The Cart", "Jan 12, 2020");
 	ShoppingCart cart;
 
+	//cout << "empty1: " << endl;
+	//cart.PrintTotalQuantityAndCost();
+	//cart.PrintItems();
+
 	cart.AddItem(water);
 	cart.AddItem(bread);
+
+	cout << "full2: " << endl;
+	cart.PrintTotalQuantityAndCost();
+	cout << endl << endl << endl;
+	cart.PrintItems();
 
 
 //	cout << cart.GetCustomerName() << endl;
 //	cout << cart.GetCreationDate() << endl;
 
-	cart.UpdateItemQuantity("Water", 10);
+	//cart.UpdateItemQuantity("Water", 0);
+	//cart.UpdateItemQuantity("Bread", 0);
 
-	cout << "total quantity: " << cart.GetTotalCost() << endl;
+	cout << "empty3: " << endl;
 
-	cart.PrintTotalQuantityAndCost();
-
-	cart.PrintItems();
+	//cart.PrintTotalQuantityAndCost();
+	//cart.PrintItems();
 }

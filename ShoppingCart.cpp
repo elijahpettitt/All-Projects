@@ -33,6 +33,12 @@ int ShoppingCart::GetItemIndex(string name) {
 }
 
 bool ShoppingCart::IsCartEmpty() {
+	if (items.empty()) {
+		return true;
+	}
+	else if (GetTotalQuantity() == 0) {
+			return true;
+	}
 	return false;
 }
 
@@ -91,26 +97,35 @@ double ShoppingCart::GetTotalCost() {
 }
 
 void ShoppingCart::PrintItems() {
-	cout << customerName << " Shopping Cart - " << creationDate << endl;
-	cout << endl;
-	cout << "Item Descriptions" << endl;
+	if (!IsCartEmpty()) {
+		cout << customerName << " Shopping Cart - " << creationDate << endl;
+		cout << endl;
+		cout << "Item Descriptions" << endl;
 
-	for (unsigned int i = 0; i < items.size(); i++) {
-		items.at(i).PrintDescription();
+		for (unsigned int i = 0; i < items.size(); i++) {
+			items.at(i).PrintDescription();
+		}
+	}
+	else {
+		cout << "Shopping cart is empty." << endl;
 	}
 }
 
 void ShoppingCart::PrintTotalQuantityAndCost() {
+	if (!IsCartEmpty()) {
+		cout << customerName << " Shopping Cart - " << creationDate << endl;
 
-	cout << customerName << " Shopping Cart - " << creationDate << endl;
+		cout << "Number of Items: " << items.size() << endl;
+		cout << endl;
 
-	cout << "Number of Items: " << items.size() << endl;
-	cout << endl;
+		for (unsigned int i = 0; i < items.size(); i++) {
 
-	for (unsigned int i = 0; i < items.size(); i++) {
+			cout << items.at(i).GetName() << " " << items.at(i).GetQuantity() << " @ $" << items.at(i).GetPrice() << " = $" << 	items.at(i).GetPrice() * items.at(i).GetQuantity() << endl;
+		}
 
-		cout << items.at(i).GetName() << " " << items.at(i).GetQuantity() << " @ $" << items.at(i).GetPrice() << " = $" << 	items.at(i).GetPrice() * items.at(i).GetQuantity() << endl;
+		cout << endl << "Total: $" << GetTotalCost() << endl;
 	}
-
-	cout << endl << "Total: $" << GetTotalCost() << endl;
+	else {
+		cout << "Shopping cart is empty." << endl;
+	}
 }

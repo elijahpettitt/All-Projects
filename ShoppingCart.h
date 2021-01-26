@@ -16,6 +16,7 @@ class ShoppingCart {
 		bool IsItemInCart(string name);
 		int GetItemIndex(string name);
 		bool IsCartEmpty();
+		
 	
 	public:
 		ShoppingCart();
