@@ -5,8 +5,17 @@ using namespace std;
 
 ItemToPurchase::ItemToPurchase() {
   this->itemName = "none";
+	this->itemDescription = "none";
   this->itemPrice = 0.0;
   this->itemQuantity = 0;
+}
+
+ItemToPurchase::ItemToPurchase(string name, string description, 
+	double price, int quantity) {
+  this->itemName = name;
+	this->itemDescription = description;
+  this->itemPrice = price;
+  this->itemQuantity = quantity;
 }
 
 void ItemToPurchase::SetName(string itemName) {

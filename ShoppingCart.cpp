@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 
 #include "ShoppingCart.h"
@@ -55,10 +56,33 @@ int ShoppingCart::GetTotalQuantity() {
 int ShoppingCart::GetTotalCost() {
 
 }
-void ShoppingCart::PrintItems() {
-
-}
-void ShoppingCart::PrintTotalQuantityAndCost() {
-
-}
 */
+
+void ShoppingCart::PrintItems() {
+	cout << customerName << " Shopping Cart - " << creationDate << endl;
+	cout << endl;
+	cout << "Item Descriptions" << endl;
+
+	for (unsigned int i = 0; i < items.size(); i++) {
+		items.at(i).PrintDescription();
+	}
+}
+
+void ShoppingCart::PrintTotalQuantityAndCost() {
+	double cost = 0.0;
+
+	cout << customerName << " Shopping Cart - " << creationDate << endl;
+	cout << endl;
+
+	cout << "Number of Items: " << items.size() << endl;
+	cout << endl;
+
+	for (unsigned int i = 0; i < items.size(); i++) {
+
+		cout << items.at(i).GetName() << " " << items.at(i).GetQuantity() << " @ $" << items.at(i).GetPrice() << " = $" << 	items.at(i).GetPrice() * items.at(i).GetQuantity() << endl;
+
+		cost += items.at(i).GetPrice() * items.at(i).GetQuantity();
+	}
+
+	cout << endl << "Total: $" << cost << endl;
+}
