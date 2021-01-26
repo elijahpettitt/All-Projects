@@ -18,7 +18,8 @@ int main() {
 
 	cout << endl;
 
-	ShoppingCart cart("The Cart", "Jan 12, 2020");
+	//ShoppingCart cart("The Cart", "Jan 12, 2020");
+	ShoppingCart cart;
 
 	cart.AddItem(water);
 	cart.AddItem(bread);
@@ -28,6 +29,8 @@ int main() {
 //	cout << cart.GetCreationDate() << endl;
 
 	cart.UpdateItemQuantity("Water", 10);
+
+	cout << "total quantity: " << cart.GetTotalCost() << endl;
 
 	cart.PrintTotalQuantityAndCost();
 

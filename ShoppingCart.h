@@ -15,6 +15,7 @@ class ShoppingCart {
 		vector<ItemToPurchase> items;
 		bool IsItemInCart(string name);
 		int GetItemIndex(string name);
+		bool IsCartEmpty();
 	
 	public:
 		ShoppingCart();
@@ -25,7 +26,7 @@ class ShoppingCart {
 		void RemoveItem(string name);
 		void UpdateItemQuantity(string name, int quantity);
 		int GetTotalQuantity();
-		int GetTotalCost();
+		double GetTotalCost();
 		void PrintItems();
 		void PrintTotalQuantityAndCost();
 };
