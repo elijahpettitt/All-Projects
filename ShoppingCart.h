@@ -22,8 +22,8 @@ class ShoppingCart {
 		string GetCustomerName();
 		string GetCreationDate();
 		void AddItem(ItemToPurchase item);
-		void RemoveItem(ItemToPurchase item);
-		void UpdateItemQuantity(string name);
+		void RemoveItem(string name);
+		void UpdateItemQuantity(string name, int quantity);
 		int GetTotalQuantity();
 		int GetTotalCost();
 		void PrintItems();

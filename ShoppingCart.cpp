@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <string>
 
 #include "ShoppingCart.h"
@@ -40,16 +41,35 @@ string ShoppingCart::GetCreationDate() {
 }
 
 void ShoppingCart::AddItem(ItemToPurchase item) {
-	items.push_back(item);
+	if (!IsItemInCart(item.GetName())) {
+		items.push_back(item);
+	}
+	else {
+		cout << "Item is already found in the cart. It will not be added."
+			<< endl;
+	}
 }
 
+
+void ShoppingCart::RemoveItem(string name) {
+	if (IsItemInCart(name)) {
+		items.erase(items.begin() + GetItemIndex(name));
+	}
+	else {
+		cout << "Item not found in cart. It will not be removed." << endl;
+	}
+}
+
+void ShoppingCart::UpdateItemQuantity(string name, int quantity) {
+
+	if (IsItemInCart(name)) {
+		items.at(GetItemIndex(name)).SetQuantity(quantity);
+	}
+	else {
+		cout << "Item not found in cart. It will not be modified." << endl;
+	}
+}
 /*
-void ShoppingCart::RemoveItem(ItemToPurchase item) {
-
-}
-void ShoppingCart::UpdateItemQuantity(string name) {
-
-}
 int ShoppingCart::GetTotalQuantity() {
 
 }
@@ -72,7 +92,6 @@ void ShoppingCart::PrintTotalQuantityAndCost() {
 	double cost = 0.0;
 
 	cout << customerName << " Shopping Cart - " << creationDate << endl;
-	cout << endl;
 
 	cout << "Number of Items: " << items.size() << endl;
 	cout << endl;

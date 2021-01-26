@@ -23,10 +23,13 @@ int main() {
 	cart.AddItem(water);
 	cart.AddItem(bread);
 
+
 //	cout << cart.GetCustomerName() << endl;
 //	cout << cart.GetCreationDate() << endl;
 
+	cart.UpdateItemQuantity("Water", 10);
+
 	cart.PrintTotalQuantityAndCost();
 
-	//cart.PrintItems();
+	cart.PrintItems();
 }
