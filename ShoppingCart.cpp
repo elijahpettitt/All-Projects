@@ -34,15 +34,12 @@ int ShoppingCart::GetItemIndex(string name) {
 
 bool ShoppingCart::IsCartEmpty() {
 	if (items.empty()) {
-    cout << "1" << endl;
     cout << items.size();
 		return true;
 	}
 	else if (GetTotalQuantity() == 0) {
-    cout << "2" << endl;
 			return true;
 	}
-    cout << "3" << endl;
 	return false;
 }
 
