@@ -13,11 +13,11 @@
 
 std::string GetUserString(const std::string& prompt);
 
-void AddMenuOption(/*TODO: list any parameters here*/);
-void RemoveMenuOption(/*TODO: list any parameters here*/);
-void ChangeMenuOption(/*TODO: list any parameters here*/);
-void DescriptionsMenuOption(/*TODO: list any parameters here*/);
-void CartMenuOption(/*TODO: list any parameters here*/);
+void AddMenuOption(ShoppingCart &theCart);
+void RemoveMenuOption(ShoppingCart &theCart);
+void ChangeMenuOption(ShoppingCart &theCart);
+void DescriptionsMenuOption(ShoppingCart &theCart);
+void CartMenuOption(ShoppingCart &theCart);
 void OptionsMenuOption();
 void QuitMenuOption();
 
@@ -37,19 +37,19 @@ int main() {
       userMenuChoice = GetUserString("Enter option: ");
 
       if (userMenuChoice == "add") {
-         AddMenuOption(/*TODO: list any arguments here*/);
+         AddMenuOption(cart);
       }
       else if (userMenuChoice == "remove") {
-         RemoveMenuOption(/*TODO: list any arguments here*/);
+         RemoveMenuOption(cart);
       }
       else if (userMenuChoice == "change") {
-         ChangeMenuOption(/*TODO: list any arguments here*/);
+         ChangeMenuOption(cart);
       }
       else if (userMenuChoice == "descriptions") {
-         DescriptionsMenuOption(/*TODO: list any arguments here*/);
+         DescriptionsMenuOption(cart);
       }
       else if (userMenuChoice == "cart") {
-         CartMenuOption(/*TODO: list any arguments here*/);
+         CartMenuOption(cart);
       }
       else if (userMenuChoice == "options") {
          OptionsMenuOption();
@@ -95,7 +95,7 @@ int GetUserInt(const std::string& prompt) {
 }
 
 
-void AddMenuOption(/*TODO: list any parameters here*/) {
+void AddMenuOption(ShoppingCart &theCart) {
    std::string itemName = GetUserString("Enter the item name: ");
    std::string itemDescription = GetUserString("Enter the item description: ");
    double itemPrice = GetUserDouble("Enter the item price: ");
@@ -107,9 +107,12 @@ void AddMenuOption(/*TODO: list any parameters here*/) {
    // .
    // This should be just 1-2 lines of code to create the item and call the appropriate method on the shoppingCart
    // You might also print error messages here, depending on how you implement the ShoppingCart class
+
+	 ItemToPurchase item(itemName, itemDescription, itemPrice, itemQuantity);
+   theCart.AddItem(item);
 }
 
-void RemoveMenuOption(/*TODO: list any parameters here*/) {
+void RemoveMenuOption(ShoppingCart &theCart) {
    std::string nameOfItemToRemove = GetUserString("Enter name of the item to remove: ");
 
    //TODO: Remove the item from the shopping cart,
@@ -118,9 +121,10 @@ void RemoveMenuOption(/*TODO: list any parameters here*/) {
    // .
    // This should be just 1 line of code to call the appropriate method on the shoppingCart
    // You might also print error messages here, depending on how you implement the ShoppingCart class
+   theCart.RemoveItem(nameOfItemToRemove);
 }
 
-void ChangeMenuOption(/*TODO: list any parameters here*/) {
+void ChangeMenuOption(ShoppingCart &theCart) {
    std::string nameOfItemToChange = GetUserString("Enter the item name: ");
    int newItemQuantity = GetUserInt("Enter the new quantity: ");
 
@@ -130,18 +134,21 @@ void ChangeMenuOption(/*TODO: list any parameters here*/) {
    // .
    // This should be just 1 line of code to call the appropriate method on the shoppingCart
    // You might also print error messages here, depending on how you implement the ShoppingCart class
+   theCart.UpdateItemQuantity(nameOfItemToChange, newItemQuantity);
 }
 
-void DescriptionsMenuOption(/*TODO: list any parameters here*/) {
+void DescriptionsMenuOption(ShoppingCart &theCart) {
    //TODO: Print the information from the shopping cart
    // .
    // This should be just 1 line of code to call the appropriate method on the shoppingCart
+   theCart.PrintItems();
 }
 
-void CartMenuOption(/*TODO: list any parameters here*/) {
+void CartMenuOption(ShoppingCart &theCart) {
    //TODO: Print the information from the shopping cart
    // .
    // This should be just 1 line of code to call the appropriate method on the shoppingCart
+   theCart.PrintTotalQuantityAndCost();
 }
 
 void OptionsMenuOption() {
